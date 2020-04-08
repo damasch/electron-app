@@ -146,8 +146,8 @@ Asar is a package. More information on the end of this docuemnt.
 
 The normal entry point is the `src/main.ts` file. 
 But for electron you need a wrapper for the application.
-In the most tutorial you have to add a `app.js` with the basic code.
-But I will show you a better way for your electron/python application.
+In the common tutorials you have to add a `app.js` with the basic code.
+But I will show you my way for your electron/python application.
 
 ### Create the Wrapper
 
@@ -640,10 +640,6 @@ Modify in the `electron/build/electron-application.ts` this part of code (remove
   event.sender.send('runMyFeatruePythonScriptRecive', 'done');
 ```
 
-####################
-OK
-####################
-
 # Integrate Python-Shell
 
 For python it would be nice if you can use a helper for every integration of a new feature model.
@@ -671,7 +667,7 @@ export class PythonOptions<T> {
 Generate a interface `MyPythonArguments`.
 
 ```
-ng generate interface features/my-feature/lib/MyPythonArguments
+ng generate interface features/my-feature/MyPythonArguments
 ```
 
 ```typescript
@@ -863,3 +859,5 @@ So, I preferr the ```"asar": false,``` Method.
 After debugging with `npm run start` and everything is ok, build your app.
 
 With `npm run release` you will create an application.
+
+
