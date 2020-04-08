@@ -25,3 +25,5 @@ export class MyFeatureIPC {
     });
   }
 }
+
+const myFeatureIPC = new MyFeatureIPC();
