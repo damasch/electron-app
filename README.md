@@ -11,7 +11,7 @@ This tutorial is written for:
 Node JS
 * Angular 9.1.0
 * Node: 13.12.0
-* OS: darwin x64
+* OS: Darwin x64
 * Electron": 8.2.0,
 * Electron Builder": ^22.4.1
 * Python-shell: ^1.0.8"
@@ -24,7 +24,7 @@ Python
 IDE: 
 * VSCode
 * Sublime
-* XCode
+* Xcode
 
 OS:
 * OS Catalina 10.15.4
@@ -140,7 +140,7 @@ Got to the end of the `scripts` node of the package.json and add the `build` nod
 }
 ```
 
-Asar is a package. More information on the end of this docuemnt.
+Asar is a package. More information on the end of this document.
 
 ## Entry point and Build operations
 
@@ -306,7 +306,7 @@ Change the `outputPath` node to `"outputPath": "dist/electron-app/src/app",`
 
 ### Update the index.html
 
-In the `scr/index.html` change the `<base href="/">` to `<base href="./">`.
+In the `scr/index.html` change the `<base href="/">` in `<base href="./">`.
 
 Change the Meta tag view port.
 
@@ -727,12 +727,12 @@ ipcMain.on('runMyFeaturePythonScript', (event, args) => {
 });
 ```
 
-# Regsitry
+# Registry
 
 At this point, our feature module call with `this.ipc.send(pyopts.ipcSend, pyopts);` the ipcMain in the `electron/build/electron-application.ts` `ElectronApplication` class.
-This is ok, but if ou have more calls an other operations like electron `showOpenDialog` method, you have to create a lot of these functionality. 
+This is ok, but if you have more calls an other operations like electron `showOpenDialog` method, you have to create a lot of these functionality. 
 
-## Feature regsitry 
+## Feature registry 
 
 Add a new File in our feature model for the electron registry.
 
@@ -776,7 +776,7 @@ export class MyFeatureIPC {
 }
 ```
 
-## Electron regsitry
+## Electron registry
 
 Add a new file for the registry.
 
@@ -852,12 +852,12 @@ Add the python directory into the `asarUpack` list.
 
 But. If you have to create a logic for asar handling. 
 And you can't access the python script not from the CLI.
-So, I preferr the ```"asar": false,``` Method.
+So, I prefer the ```"asar": false,``` Method.
 
-# A important melting Point
+# An important melting Point
 
-If the data changes in the application, normaly angular detect the changes (ChangeDetectorRef) by itself.
-But angular in a elctron app, you have update the data with zone.js.
+If the data changes in the application, normally angular detect the changes (ChangeDetectorRef) by itself.
+But angular in an electron app, you have update the data with zone.js.
 
 For this case update the `src/app/features/my-feature/my-feature.component.ts` file.
 
@@ -866,7 +866,7 @@ Add NgZone to your component.
 import { Component, OnInit, NgZone } from '@angular/core';
 ```
 
-Initialize NgZone in the contructor.
+Initialise NgZone in the constructor.
 ```typescript
 constructor(private zone: NgZone) {
 ```
