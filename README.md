@@ -1,4 +1,4 @@
-[teaser]: https://raw.githubusercontent.com/damasch/electron-app/master/doc/assets/Teaser.png "Electron + Angular + Python "
+![teaser](https://raw.githubusercontent.com/damasch/electron-app/master/doc/assets/Teaser.png)
 
 # How I build my first Electron App
 
