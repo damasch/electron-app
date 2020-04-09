@@ -1,3 +1,5 @@
+[teaser]: https://raw.githubusercontent.com/damasch/electron-app/master/doc/assets/Teaser.png "Electron + Angular + Python "
+
 # How I build my first Electron App
 
 Electron + Angular + Python 
