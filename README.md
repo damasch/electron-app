@@ -854,10 +854,52 @@ But. If you have to create a logic for asar handling.
 And you can't access the python script not from the CLI.
 So, I preferr the ```"asar": false,``` Method.
 
+# A important melting Point
+
+If the data changes in the application, normaly angular detect the changes (ChangeDetectorRef) by itself.
+But angular in a elctron app, you have update the data with zone.js.
+
+For this case update the `src/app/features/my-feature/my-feature.component.ts` file.
+
+Add NgZone to your component.
+```typescript
+import { Component, OnInit, NgZone } from '@angular/core';
+```
+
+Initialize NgZone in the contructor.
+```typescript
+constructor(private zone: NgZone) {
+```
+
+Update the data for the view with:
+```typescript
+this.zone.run(() => {
+  this.myTitle = 'foo';
+});
+```
+
+Example:
+```typescript
+mydata: any;
+runPythonScript() {
+  this.ipc.send(this.pyopts.ipcSend, this.pyopts);
+
+  this.ipc.once(this.pyopts.ipcReceive, (event, data) => {
+    console.log(event, data);
+
+    this.zone.run(() => {
+      this.mydata = data;
+    });
+  });
+}
+```
+
 # Start/Build/Release the app
 
 After debugging with `npm run start` and everything is ok, build your app.
 
 With `npm run release` you will create an application.
+
+
 
 

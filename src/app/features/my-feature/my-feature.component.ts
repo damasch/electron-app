@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { PythonOptions } from '../../lib/python/python-options';
 import { MyPythonArguments } from './my-python-arguments';
@@ -21,8 +21,9 @@ export class MyFeatureComponent implements OnInit {
       arg3: false
     }
   };
+  mydata: any;
 
-  constructor() {
+  constructor(private zone: NgZone) {
     if ((window as any).require) {
       try {
         this.ipc = (window as any).require('electron').ipcRenderer;
@@ -39,6 +40,10 @@ export class MyFeatureComponent implements OnInit {
 
     this.ipc.once(this.pyopts.ipcReceive, (event, data) => {
       console.log(event, data);
+
+      this.zone.run(() => {
+        this.mydata = data;
+      });
     });
   }
 
