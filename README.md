@@ -16,9 +16,8 @@ Node JS
 * OS: Darwin x64
 * Electron": 8.2.0,
 * Electron Builder": ^22.4.1
-* Python-shell: ^1.0.8"
-* Bootstrap: 4.4.1
-* jQuery: 3.4.1
+* Python-shell: ^1.0.8
+* NG Bootstrap: ^6.0.2,
 
 Python
 * Python: 3.7.0
@@ -30,8 +29,6 @@ IDE:
 
 OS:
 * OS Catalina 10.15.4
-
-
 
 # Setup
 ## Installing
@@ -324,6 +321,38 @@ To:
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 ```
 
+To prevent the warning:
+```
+Electron Security Warning 
+This renderer process has Node.js integration enabled and 
+attempted to load remote content. This exposes users of this app to severe security risks.
+
+For more information and help, consult https://electronjs.org/docs/tutorial/security
+```
+Add this meta tag into the head of your dom.
+
+```html
+<meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+```
+
+Complete markup.
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ElectronApp</title>
+  <base href="./">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+```
+
 # First Start of your app
 
 Start your app `npm run start`.
@@ -382,22 +411,26 @@ If you don't want bootstrap or anything like that, skip this section and jump to
 For a nice view i have installed bootstrap, jQuery and fontawsome as node modules.
 Install:
 ```
-npm install --save-dev bootstrap jquery popper.js
+ng add @angular/localize
+npm install --save bootstrap @ng-bootstrap/ng-bootstrap
 ```
-I choose this way, because i want to theme up my bootstrap. 
-It is important to write the jquery module in lower case.
 
-## Update the angular.json
+I choose this way, because i will theming  bootstrap with scss and use the modules from the ng-bootrap package. 
 
-Load the scripts into the angular project.
-The angular.json scripts node (projects -> electron-app -> architect -> build -> options -> scripts) get this values.
+Edit the `src/app/app.module.ts` and import the `NgbModule`.
 
-```json
-"scripts": [
-  "node_modules/jquery/dist/jquery.min.js",
-  "node_modules/popper.js/dist/popper.min.js",
-  "node_modules/bootstrap/dist/js/bootstrap.min.js"
-]
+
+
+```typescript
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+...
+
+imports: [
+  BrowserModule,
+  OcrConverterModule,
+  NgbModule
+],
 ```
 
 ## Import the styles
